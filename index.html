@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Your CSS styles remain unchanged */
+        #container{
+             border: 1px solid black;
+             width: 20%;
+             height: 580px;
+             margin: auto;
+             margin-top: 50px;
+             align-items: center;
+              /* align: center; */
+              justify-content: center;
+              /* text-align: center; */
+              box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+              color: white;
+              background-color: white;
+        }
+        body{
+            background-color: black;
+        }
+        button{
+            font-size: 40px;
+        }
+        .year{
+            margin-left: 54px;
+            background-color: green;
+            color: black;
+        }
+        .year1{
+            background-color: red;
+            color: black;
+            margin-left: 5px;
+            width: 100px;
+        }
+        .disply{
+            border: 1px solid black;
+            color: black;
+            width: 150px;
+            text-align: center;
+            margin-top: -20px;
+            margin-left: 50px;
+            height: 50px;
+            padding-top: 10px;
+            background-color: gray;
+        }
+        .button_container{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 10px;
+        }
+        .or{
+            background-color: orange;
+        }
+        .gr{
+            background-color: chartreuse;
+        }
+        .enter{
+            width: 200px;
+            margin-top: -5px;
+            margin-left: 29px;
+            background-color: black;
+            color: white;
+        }
+       
+    </style>
+</head>
+<body>
+    <div id="container">
+        <!-- Your HTML structure remains unchanged -->
+        <!-- <div id="container"> -->
+
+            <div class="parent1">
+                <button class="year1">43</button><button class="year">2019</button>
+                <h3 style="color: black; font-size: 30px;margin-top: -0px;margin-left: 23px;">Min <span style="margin-left: 100px;">Max</span></h3>
+            </div>
+            
+            
+            <h3 style="color: black;font-size: 30px;text-align: center;">Score</h3>
+    
+            <h1 class="disply">Disply</h1>
+            <br>
+            <div class="button_container">
+                <button id="gr1" class="gr">1</button>
+                <button id="or2" class="or">2</button>
+                <button id="gr3" class="gr">3</button>
+                <button id="or4" class="or">4</button>
+                <button id="or5" class="or">5</button>
+                <button id="or6" class="or">6</button>
+                <button id="gr7" class="gr">7</button>
+                <button id="or8" class="or">8</button>
+                <button id="gr9" class="gr">9</button>
+                <button id="id1" style="margin-top: 10px;margin-left: 0px;width: 80px;background-color: blueviolet;">0</button>
+            </div>
+            <br>
+            <button id="id2" class="enter">Enter</button>
+        <!-- </div> -->
+    </div>
+    <script>
+        let input1 = document.getElementsByClassName('year1')[0];
+        let input2 = document.getElementsByClassName('year')[0];
+        let display = document.getElementsByClassName('disply')[0];
+        let buttonContainer = document.getElementsByClassName('button_container')[0].getElementsByTagName('button');
+        let enterButton = document.getElementById('id2');
+
+        let currentScore = "";
+
+        function addToScore(number) {
+            currentScore += number;
+            display.innerText = currentScore;
+        }
+
+        function enterScore() {
+            const score = parseInt(currentScore);
+            const min = parseInt(input1.innerText);
+            const max = parseInt(input2.innerText);
+
+            if (score < min) {
+                input1.innerText = score;
+            }
+
+            if (score > max) {
+                input2.innerText = score;
+            }
+
+            // Reset the score box
+            currentScore = '';
+            display.innerText = '';
+        }
+
+        // Assign event listeners to buttons
+        for (let i = 0; i < buttonContainer.length; i++) {
+            buttonContainer[i].addEventListener('click', function() {
+                addToScore(this.innerText);
+            });
+        }
+
+        enterButton.addEventListener('click', function() {
+            enterScore();
+        });
+    </script>
+</body>
+</html>
